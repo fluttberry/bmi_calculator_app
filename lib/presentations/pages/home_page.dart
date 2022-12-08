@@ -10,19 +10,41 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int san = 0;
+  int weight = 60;
+  int age = 25;
+  void countWeight(String userdinBaskan) {
+    if (userdinBaskan == 'Minus') {
+      weight--;
+    } else {
+      weight++;
+    }
+    setState(() {});
+  }
+
+  void countAddAge() {
+    setState(() {});
+    age = age + 1;
+  }
+
+  void countRemoveAge() {
+    setState(() {});
+    if (age == 0) {
+      age++;
+    }
+    age = age - 1;
+  }
 
   void countAdd() {
     setState(() {});
-    san = san + 1;
+    weight = weight + 1;
   }
 
   void countRemove() {
     setState(() {});
-    if (san == 0) {
-      san++;
+    if (weight == 0) {
+      weight++;
     }
-    san = san - 1;
+    weight = weight - 1;
   }
 
   @override
@@ -46,9 +68,17 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const WeightAgeWidget(
-                countText: '60',
+              WeightAgeWidget(
+                countText: weight.toString(),
                 text: 'weight',
+                onMinus: () => countWeight('Minus'),
+                onPlus: () => countWeight('Plus'),
+              ),
+              WeightAgeWidget(
+                countText: age.toString(),
+                text: 'age',
+                onMinus: countRemoveAge,
+                onPlus: countAddAge,
               ),
             ],
           ),
