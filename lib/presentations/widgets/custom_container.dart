@@ -1,3 +1,5 @@
+import 'package:bmi_app/constants/text_style/text_styles.dart';
+import 'package:bmi_app/presentations/widgets/decor_br_widget.dart';
 import 'package:flutter/material.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -13,10 +15,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.teal,
-      ),
+      decoration: DecorationBRWidget.borderRadius12Teal,
       padding: const EdgeInsets.all(30),
       child: Column(
         children: [
@@ -26,7 +25,7 @@ class CustomContainer extends StatelessWidget {
           ),
           Text(
             text!.toUpperCase(),
-            style: const TextStyle(fontSize: 25),
+            style: TextStyles.text25Black,
           ),
         ],
       ),
